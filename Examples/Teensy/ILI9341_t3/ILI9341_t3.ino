@@ -4,7 +4,7 @@
 #include <font_LiberationMonoItalic.h>
 #include <SPI.h>
 
-#define TFT_CS        A1      //odd I know
+#define TFT_CS        10
 #define TFT_DC        9
 
 // setup some colors
