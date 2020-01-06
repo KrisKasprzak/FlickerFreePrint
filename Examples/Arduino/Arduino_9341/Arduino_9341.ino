@@ -51,16 +51,14 @@ void setup() {
 }
 
 void loop() {
-
+  
+  // get some data
   i++;
   j += 0.0013;
-  // get some data
-
   thetime = millis();
   h = (thetime / 3600000) / 1000;
   m = (thetime / 1000 - (3600 * h)) / 60;
   s = (thetime / 1000 - (3600 * h) - (m * 60));
-
   sprintf(str, "Time: %02d:%02d:%02d", h, m, s);
 
 
@@ -72,6 +70,7 @@ void loop() {
   Display.fillRect(Display.getCursorX(), 0, 100, 35, C_RED);
   Display.print(i);
 
+  // now draw some data using flicker free print
   Display.setCursor(10, 80);
   Display.setTextColor(C_WHITE, C_RED);
   Display.print("FlickerFree library: ");
