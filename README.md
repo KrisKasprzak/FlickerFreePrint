@@ -17,6 +17,7 @@ This library will let programmers paint data to TFT LCD's without first having t
   2. this linbrary will not paint correctly if a background gradient is used
   3. this library can work with int, float, char, and other data types
   4. this library has no capability to print DEX, HEX or Println() functions
+  5. this libary was not tested with LCD (20x4 type)
   
   <br>
 <br>
