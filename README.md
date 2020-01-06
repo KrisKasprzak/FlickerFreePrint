@@ -21,4 +21,4 @@ This library will let programmers paint data to TFT LCD's without first having t
   <br>
 <br>
 
-![header image](https://raw.github.com/KrisKasprzak/FlickerFreePrint/master/FFPrint.bmp)
+![header image](https://raw.github.com/KrisKasprzak/FlickerFreePrint/master/FFPrint.jpg)
