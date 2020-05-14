@@ -50,9 +50,6 @@
   #include "Arduino.h"
 #endif
 
-
-/////////////////////////////////////////////////////////////////////////////////////////
-// change this to match your longest data type
 #define BUF_LEN 12
 
 template<typename T1>
@@ -62,19 +59,22 @@ class FlickerFreePrint {
 
      FlickerFreePrint(T1* disp, uint16_t ForeColor = 65536, uint16_t BackColor = 0)
     {
-      	d = disp;
-	fc = ForeColor;
-      	bc = BackColor;
+      d = disp;
+	  fc = ForeColor;
+      bc = BackColor;
     }
 
 	void print(const char *buf){
 		
-		len = strlen(buf);
-		if (n) {
-			n = false;
-			strncpy(obuf, buf, BUF_LEN );
-		}
+		len = strlen(obuf);
 
+		if (len == 0) {
+			len = strlen(buf);
+		}
+		// need to get the longer of the two--previous or new
+		if (strlen(buf) > len) {
+			len = strlen(buf);
+		}
 		blanked = false;
 		c = d->getCursorX();
 		d->setCursor(c, d->getCursorY());
@@ -106,6 +106,10 @@ class FlickerFreePrint {
 		len = strlen(obuf);
 
 		if (len == 0) {
+			len = strlen(buf);
+		}
+		// need to get the longer of the two--previous or new
+		if (strlen(buf) > len) {
 			len = strlen(buf);
 		}
 		blanked = false;
@@ -141,6 +145,10 @@ class FlickerFreePrint {
 		if (len == 0) {
 			len = strlen(buf);
 		}
+		// need to get the longer of the two--previous or new
+		if (strlen(buf) > len) {
+			len = strlen(buf);
+		}
 		blanked = false;
 		c = d->getCursorX();
 		for (i = 0; i < len; i++) {
@@ -174,7 +182,10 @@ class FlickerFreePrint {
 		if (len == 0) {
 			len = strlen(buf);
 		}
-
+		// need to get the longer of the two--previous or new
+		if (strlen(buf) > len) {
+			len = strlen(buf);
+		}
 		blanked = false;
 		c = d->getCursorX();
 		d->setCursor(c, d->getCursorY());
@@ -207,7 +218,10 @@ class FlickerFreePrint {
 		if (len == 0) {
 			len = strlen(buf);
 		}
-
+		// need to get the longer of the two--previous or new
+		if (strlen(buf) > len) {
+			len = strlen(buf);
+		}
 		blanked = false;
 		c = d->getCursorX();
 		d->setCursor(c, d->getCursorY());
@@ -242,7 +256,11 @@ class FlickerFreePrint {
 		if (len == 0) {
 			len = strlen(buf);
 		}
-	
+		// need to get the longer of the two--previous or new
+		 if (strlen(buf) > len) {
+			 len = strlen(buf);
+		 }
+
 		blanked = false;
 		c = d->getCursorX();
 		d->setCursor(c, d->getCursorY());
@@ -278,7 +296,10 @@ class FlickerFreePrint {
 		if (len == 0) {
 			len = strlen(buf);
 		}
-	
+		// need to get the longer of the two--previous or new
+		if (strlen(buf) > len) {
+			len = strlen(buf);
+		}	
 		blanked = false;
 		c = d->getCursorX();
 		d->setCursor(c, d->getCursorY());
@@ -310,20 +331,24 @@ class FlickerFreePrint {
 	  bc = BackColor;
     }
 
-  protected:
+	protected:
 
-    T1			*d;
-    char		obuf[BUF_LEN];
-    int			c;
-    uint16_t	fc;
+	T1		*d;
+	char 		obuf[BUF_LEN];
+	int		c;
+	uint16_t 	fc;
 	uint16_t	bc;
-    uint16_t	i;
+	uint16_t	i;
 	uint16_t	j;
-    char		buf[BUF_LEN];
-    uint16_t    len;
+	char 		buf[BUF_LEN];
+	uint16_t    	len;
 	bool		n = true;
 	bool		blanked = false;
 
 };
 
+
 #endif
+
+
+/////////////////////////////
