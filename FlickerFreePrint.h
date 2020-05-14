@@ -31,7 +31,7 @@
   notes:
   1. This library is template based so it should work with most display drivers provided
   the driver supports getCursorX() methods
-  2. this linbrary will not paint correctly if a background gradient is used
+  2. this library will not paint correctly if a background gradient is used
   3. this library can work with int, float, char, and other data types
 
   
@@ -50,7 +50,10 @@
   #include "Arduino.h"
 #endif
 
-#define BUF_LEN 38
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// change this to match your longest data type
+#define BUF_LEN 12
 
 template<typename T1>
 class FlickerFreePrint {
@@ -59,9 +62,9 @@ class FlickerFreePrint {
 
      FlickerFreePrint(T1* disp, uint16_t ForeColor = 65536, uint16_t BackColor = 0)
     {
-      d = disp;
-	  fc = ForeColor;
-      bc = BackColor;
+      	d = disp;
+	fc = ForeColor;
+      	bc = BackColor;
     }
 
 	void print(const char *buf){
@@ -69,8 +72,9 @@ class FlickerFreePrint {
 		len = strlen(buf);
 		if (n) {
 			n = false;
-			strncpy(obuf, buf,38);
+			strncpy(obuf, buf, BUF_LEN );
 		}
+
 		blanked = false;
 		c = d->getCursorX();
 		d->setCursor(c, d->getCursorY());
@@ -89,21 +93,23 @@ class FlickerFreePrint {
 			}
 			d->setTextColor(fc, bc);
 			d->print(buf[i]);
-			obuf[i] = buf[i];
 		}
+
+		strcpy(obuf,buf);
+
 	}
 
 
 	void print(int Data){
 		dtostrf(Data, 0, 0, buf);
-		len = strlen(buf);
-		if (n) {
-			n = false;
-			dtostrf(Data, 0, 0, obuf);
+
+		len = strlen(obuf);
+
+		if (len == 0) {
+			len = strlen(buf);
 		}
 		blanked = false;
 		c = d->getCursorX();
-		d->setCursor(c, d->getCursorY());
 		for (i = 0; i < len; i++) {
 			if (buf[i] != obuf[i]) {
 				c = d->getCursorX();
@@ -119,17 +125,56 @@ class FlickerFreePrint {
 			}
 			d->setTextColor(fc, bc);
 			d->print(buf[i]);
-			obuf[i] = buf[i];
+			
 		}
+
+		strcpy(obuf,buf);
+
+	}
+
+	void print(unsigned int Data){
+
+		dtostrf(Data, 0, 0, buf);
+
+		len = strlen(obuf);
+
+		if (len == 0) {
+			len = strlen(buf);
+		}
+		blanked = false;
+		c = d->getCursorX();
+		for (i = 0; i < len; i++) {
+			if (buf[i] != obuf[i]) {
+				c = d->getCursorX();
+				if (!blanked) {
+					blanked = true;
+					for (j = i; j < len; j++) {
+						d->setTextColor(bc, bc);
+						d->print(obuf[j]);
+					}
+				}
+				
+				d->setCursor(c, d->getCursorY());
+			}
+			d->setTextColor(fc, bc);
+			d->print(buf[i]);
+			
+		}
+
+		strcpy(obuf,buf);
+
 	}
 
 	void print(long Data){
+
 		dtostrf(Data, 0, 0, buf);
-		len = strlen(buf);
-		if (n) {
-			n = false;
-			dtostrf(Data, 0, 0, obuf);
+
+		len = strlen(obuf);
+
+		if (len == 0) {
+			len = strlen(buf);
 		}
+
 		blanked = false;
 		c = d->getCursorX();
 		d->setCursor(c, d->getCursorY());
@@ -146,18 +191,58 @@ class FlickerFreePrint {
 				d->setTextColor(fc, bc);
 				d->setCursor(c, d->getCursorY());
 			}
+
 			d->print(buf[i]);
-			obuf[i] = buf[i];
+
 		}
+
+		strcpy(obuf,buf);
+
+	}
+	void print(unsigned long Data){
+		dtostrf(Data, 0, 0, buf);
+
+		len = strlen(obuf);
+
+		if (len == 0) {
+			len = strlen(buf);
+		}
+
+		blanked = false;
+		c = d->getCursorX();
+		d->setCursor(c, d->getCursorY());
+		for (i = 0; i < len; i++) {
+			if (buf[i] != obuf[i]) {
+				c = d->getCursorX();
+				if (!blanked) {
+					blanked = true;
+					for (j = i; j < len; j++) {
+						d->setTextColor(bc, bc);
+						d->print(obuf[j]);
+					}
+				}
+				d->setTextColor(fc, bc);
+				d->setCursor(c, d->getCursorY());
+			}
+
+			d->print(buf[i]);
+
+		}
+
+		strcpy(obuf,buf);
+
 	}
 
 	void print(float Data, int Dec = 2){
+
 		dtostrf(Data, 0, Dec, buf);
-		len = strlen(buf);
-		if (n) {
-			n = false;
-			dtostrf(Data, 0, Dec, obuf);
+
+		len = strlen(obuf);
+
+		if (len == 0) {
+			len = strlen(buf);
 		}
+	
 		blanked = false;
 		c = d->getCursorX();
 		d->setCursor(c, d->getCursorY());
@@ -174,10 +259,50 @@ class FlickerFreePrint {
 				
 				d->setCursor(c, d->getCursorY());
 			}
+			
 			d->setTextColor(fc, bc);
 			d->print(buf[i]);
-			obuf[i] = buf[i];
+
 		}
+
+        strcpy(obuf,buf);
+
+	}
+
+	void print(double Data, int Dec = 2){
+
+		dtostrf(Data, 0, Dec, buf);
+
+		len = strlen(obuf);
+
+		if (len == 0) {
+			len = strlen(buf);
+		}
+	
+		blanked = false;
+		c = d->getCursorX();
+		d->setCursor(c, d->getCursorY());
+		for (i = 0; i < len; i++) {
+			if (buf[i] != obuf[i]) {
+				c = d->getCursorX();
+				if (!blanked) {
+					blanked = true;
+					for (j = i; j < len; j++) {
+						d->setTextColor(bc, bc);
+						d->print(obuf[j]);
+					}
+				}
+				
+				d->setCursor(c, d->getCursorY());
+			}
+			
+			d->setTextColor(fc, bc);
+			d->print(buf[i]);
+
+		}
+
+        strcpy(obuf,buf);
+
 	}
 
     void setTextColor(uint16_t ForeColor , uint16_t BackColor) {
@@ -200,16 +325,5 @@ class FlickerFreePrint {
 	bool		blanked = false;
 
 };
-
-
-
-//////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
 
 #endif
