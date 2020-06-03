@@ -66,24 +66,18 @@ class FlickerFreePrint {
 
 	void print(const char *buf){
 		
-		len = strlen(obuf);
-
-		if (len == 0) {
-			len = strlen(buf);
-		}
-		// need to get the longer of the two--previous or new
-		if (strlen(buf) > len) {
-			len = strlen(buf);
-		}
+		olen = strlen(obuf);
+		len = strlen(buf);
+	
 		blanked = false;
 		c = d->getCursorX();
-		d->setCursor(c, d->getCursorY());
+		
 		for (i = 0; i < len; i++) {
 			if (buf[i] != obuf[i]) {
 				c = d->getCursorX();
 				if (!blanked) {
 					blanked = true;
-					for (j = i; j < len; j++) {
+					for (j = i; j < olen; j++) {
 						d->setTextColor(bc, bc);
 						d->print(obuf[j]);
 					}
@@ -93,6 +87,7 @@ class FlickerFreePrint {
 			}
 			d->setTextColor(fc, bc);
 			d->print(buf[i]);
+			
 		}
 
 		strcpy(obuf,buf);
@@ -101,25 +96,21 @@ class FlickerFreePrint {
 
 
 	void print(int Data){
+
 		dtostrf(Data, 0, 0, buf);
 
-		len = strlen(obuf);
+		olen = strlen(obuf);
+		len = strlen(buf);
 
-		if (len == 0) {
-			len = strlen(buf);
-		}
-		// need to get the longer of the two--previous or new
-		if (strlen(buf) > len) {
-			len = strlen(buf);
-		}
 		blanked = false;
 		c = d->getCursorX();
+
 		for (i = 0; i < len; i++) {
 			if (buf[i] != obuf[i]) {
 				c = d->getCursorX();
 				if (!blanked) {
 					blanked = true;
-					for (j = i; j < len; j++) {
+					for (j = i; j < olen; j++) {
 						d->setTextColor(bc, bc);
 						d->print(obuf[j]);
 					}
@@ -140,23 +131,17 @@ class FlickerFreePrint {
 
 		dtostrf(Data, 0, 0, buf);
 
-		len = strlen(obuf);
-
-		if (len == 0) {
-			len = strlen(buf);
-		}
-		// need to get the longer of the two--previous or new
-		if (strlen(buf) > len) {
-			len = strlen(buf);
-		}
+		olen = strlen(obuf);
+		len = strlen(buf);
 		blanked = false;
 		c = d->getCursorX();
+
 		for (i = 0; i < len; i++) {
 			if (buf[i] != obuf[i]) {
 				c = d->getCursorX();
 				if (!blanked) {
 					blanked = true;
-					for (j = i; j < len; j++) {
+					for (j = i; j < olen; j++) {
 						d->setTextColor(bc, bc);
 						d->print(obuf[j]);
 					}
@@ -177,32 +162,25 @@ class FlickerFreePrint {
 
 		dtostrf(Data, 0, 0, buf);
 
-		len = strlen(obuf);
-
-		if (len == 0) {
-			len = strlen(buf);
-		}
-		// need to get the longer of the two--previous or new
-		if (strlen(buf) > len) {
-			len = strlen(buf);
-		}
+		olen = strlen(obuf);
+		len = strlen(buf);
 		blanked = false;
 		c = d->getCursorX();
-		d->setCursor(c, d->getCursorY());
+		
 		for (i = 0; i < len; i++) {
 			if (buf[i] != obuf[i]) {
 				c = d->getCursorX();
 				if (!blanked) {
 					blanked = true;
-					for (j = i; j < len; j++) {
+					for (j = i; j < olen; j++) {
 						d->setTextColor(bc, bc);
 						d->print(obuf[j]);
 					}
 				}
-				d->setTextColor(fc, bc);
+				
 				d->setCursor(c, d->getCursorY());
 			}
-
+			d->setTextColor(fc, bc);
 			d->print(buf[i]);
 
 		}
@@ -210,35 +188,29 @@ class FlickerFreePrint {
 		strcpy(obuf,buf);
 
 	}
+
 	void print(unsigned long Data){
 		dtostrf(Data, 0, 0, buf);
 
-		len = strlen(obuf);
-
-		if (len == 0) {
-			len = strlen(buf);
-		}
-		// need to get the longer of the two--previous or new
-		if (strlen(buf) > len) {
-			len = strlen(buf);
-		}
+		olen = strlen(obuf);
+		len = strlen(buf);
 		blanked = false;
 		c = d->getCursorX();
-		d->setCursor(c, d->getCursorY());
+		
 		for (i = 0; i < len; i++) {
 			if (buf[i] != obuf[i]) {
 				c = d->getCursorX();
 				if (!blanked) {
 					blanked = true;
-					for (j = i; j < len; j++) {
+					for (j = i; j < olen; j++) {
 						d->setTextColor(bc, bc);
 						d->print(obuf[j]);
 					}
 				}
-				d->setTextColor(fc, bc);
+				
 				d->setCursor(c, d->getCursorY());
 			}
-
+			d->setTextColor(fc, bc);
 			d->print(buf[i]);
 
 		}
@@ -251,25 +223,18 @@ class FlickerFreePrint {
 
 		dtostrf(Data, 0, Dec, buf);
 
-		len = strlen(obuf);
-
-		if (len == 0) {
-			len = strlen(buf);
-		}
-		// need to get the longer of the two--previous or new
-		 if (strlen(buf) > len) {
-			 len = strlen(buf);
-		 }
+		olen = strlen(obuf);
+		len = strlen(buf);
 
 		blanked = false;
 		c = d->getCursorX();
-		d->setCursor(c, d->getCursorY());
+		
 		for (i = 0; i < len; i++) {
 			if (buf[i] != obuf[i]) {
 				c = d->getCursorX();
 				if (!blanked) {
 					blanked = true;
-					for (j = i; j < len; j++) {
+					for (j = i; j < olen; j++) {
 						d->setTextColor(bc, bc);
 						d->print(obuf[j]);
 					}
@@ -291,24 +256,17 @@ class FlickerFreePrint {
 
 		dtostrf(Data, 0, Dec, buf);
 
-		len = strlen(obuf);
-
-		if (len == 0) {
-			len = strlen(buf);
-		}
-		// need to get the longer of the two--previous or new
-		if (strlen(buf) > len) {
-			len = strlen(buf);
-		}	
+		olen = strlen(obuf);
+		len = strlen(buf);	
 		blanked = false;
 		c = d->getCursorX();
-		d->setCursor(c, d->getCursorY());
+		
 		for (i = 0; i < len; i++) {
 			if (buf[i] != obuf[i]) {
 				c = d->getCursorX();
 				if (!blanked) {
 					blanked = true;
-					for (j = i; j < len; j++) {
+					for (j = i; j < olen; j++) {
 						d->setTextColor(bc, bc);
 						d->print(obuf[j]);
 					}
@@ -331,17 +289,18 @@ class FlickerFreePrint {
 	  bc = BackColor;
     }
 
-	protected:
+  protected:
 
-	T1		*d;
-	char 		obuf[BUF_LEN];
-	int		c;
-	uint16_t 	fc;
+    T1			*d;
+    char		obuf[BUF_LEN];
+    int			c;
+    uint16_t	fc;
 	uint16_t	bc;
-	uint16_t	i;
+    uint16_t	i;
 	uint16_t	j;
-	char 		buf[BUF_LEN];
-	uint16_t    	len;
+    char		buf[BUF_LEN];
+    uint16_t    len;
+	uint16_t    olen;
 	bool		n = true;
 	bool		blanked = false;
 
