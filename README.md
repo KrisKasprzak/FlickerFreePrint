@@ -22,6 +22,10 @@ This library will let programmers paint data to TFT LCD's without first having t
   <br>
 <br>
 
-The image below can't show the reuslts in a static image, but in the "Crude Repaint" you will see 25 flicker during each redraw. The yellow text is drawn with FlickerFreePrint and wil not flicker. Same for the blue and green data. Note that the data types for the text is int, float and char.
+
+
+The image below can't show the reuslts in a static image, but in the "Crude Repaint" you will see 25 flicker during each redraw. The yellow text is drawn with FlickerFreePrint and wil not flicker. Same for the blue and green data. Note that the data types for the text is int, float and char. Have a watch
+
+https://youtu.be/uMqTAoCCCX8
 
 ![header image](https://raw.github.com/KrisKasprzak/FlickerFreePrint/master/FFPrint.jpg)
