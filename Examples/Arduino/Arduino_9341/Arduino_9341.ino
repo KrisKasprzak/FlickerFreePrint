@@ -2,7 +2,7 @@
 #include "Adafruit_GFX.h"
 #include "Adafruit_ILI9341.h"
 #include <FlickerFreePrint.h>
-#include <Fonts\FreeSansOblique12pt7b.h>           // custom fonts that ships with ILI9341_t3.h
+#include <Fonts\FreeSansOblique12pt7b.h>
 
 #define TFT_CS        10
 #define TFT_DC        9
