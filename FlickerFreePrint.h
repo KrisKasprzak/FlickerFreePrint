@@ -42,7 +42,7 @@
 #ifndef FLICKER_FREE_PRINT
 #define FLICKER_FREE_PRINT
 
-#define FLICKER_FREE_PRINT_VER
+#define FLICKER_FREE_PRINT_VER 1.0
 
 // added 12-23.2021 to allow usage for Adafruit M4 and M0 feather boards
 #include <avr/dtostrf.h>
