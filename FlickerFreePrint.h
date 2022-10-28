@@ -34,16 +34,18 @@
   2. this library will not paint correctly if a background gradient is used
   3. this library can work with int, float, char, and other data types
 
+  ver 		date 			author			comments
+  1.0		6/2020			kasprzak		initial code
   
 */
 
-// added 12-23.2021 to allow usage for Adafruit M4 and M0 feather boards
-
-#include <avr/dtostrf.h>
-
-
 #ifndef FLICKER_FREE_PRINT
 #define FLICKER_FREE_PRINT
+
+#define FLICKER_FREE_PRINT_VER
+
+// added 12-23.2021 to allow usage for Adafruit M4 and M0 feather boards
+#include <avr/dtostrf.h>
 
 #if ARDUINO >= 100
   #include "Arduino.h"
