@@ -2,7 +2,7 @@
 
 This library will let programmers paint data to TFT LCD's without first having to draw a fillRec to hide old text. This is because a red filled rectangle is first being drawn to erase the previous number. This is a very common approch for clearing old data with fonts that are porportional (character widths are NOT fixed). If using non-proportional fonts this library is not needed as the .setFontColor(ForeColor, BackColor) can be used to automatically clear non drawn areas. This library intelligently paints changed text in background color before painting new text.
 
-<b><h3
+<b><h3>
 WARNING
        <br>
        This library is intended to be used with a wide variet of MCU's. A special library (dtostrf.h) is needed for some MCU's. This library is delivered with certian MCU's that require it, but not all. If you get a compile error "no such file or directory: dtostrf.h", uncomment this line in FlickerFreePrint.h (around line 50 or so) so the compiler can include it. I have this commented out as few MCU's need it.
