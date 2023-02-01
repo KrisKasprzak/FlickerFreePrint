@@ -19,7 +19,7 @@ WARNING
 2. create a FlickerFreePaint object for each data to be drawn
 (put the <object type netween the brackets>, pass in your display object and set fore color and back color)
         <br>
-FlickerFreePrint<ILI9341_t3> Data1(&Display, 0xFFFF, 0X0000);
+FlickerFreePrint<YOUR DISPLAY OBJECT TYPE> Data1(&YOUR DISPLAY OBJECT NAME, 0xFFFF, 0X0000);
 
 
 3. Print the data similar to the Print object except call print on the data object
