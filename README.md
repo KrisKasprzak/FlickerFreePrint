@@ -25,7 +25,9 @@ FlickerFreePrint<ILI9341_t3> Data1(&Display, 0xFFFF, 0X0000);
 3. Print the data similar to the Print object except call print on the data object
         <br>
   Data1.setTextColor(0xFFFF, 0X0000);
+        <br>
   float j = some data;
+        <br>
   Data1.print(j, 4);
   
 <b><h3>Tips on usage</b></h3> 
