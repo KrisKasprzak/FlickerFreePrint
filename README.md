@@ -13,14 +13,17 @@ WARNING
 <b><h3>General code usage</b></h3> 
 
 1. #include the library 
+       <br>
 #include <FlickerFreePrint.h>
 
 2. create a FlickerFreePaint object for each data to be drawn
 (pass in your display object and set fore color and back color)
+        <br>
 FlickerFreePrint<ILI9341_t3> Data1(&Display, 0xFFFF, 0X0000);
 
 
 3. Print the data similar to the Print object except call print on the data object
+        <br>
   Data1.setTextColor(0xFFFF, 0X0000);
   float j = some data;
   Data1.print(j, 4);
