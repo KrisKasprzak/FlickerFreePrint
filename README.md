@@ -17,7 +17,7 @@ WARNING
 #include <FlickerFreePrint.h>
 
 2. create a FlickerFreePaint object for each data to be drawn
-(pass in your display object and set fore color and back color)
+(put the <object type netween the brackets>, pass in your display object and set fore color and back color)
         <br>
 FlickerFreePrint<ILI9341_t3> Data1(&Display, 0xFFFF, 0X0000);
 
