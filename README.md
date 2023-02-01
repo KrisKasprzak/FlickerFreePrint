@@ -12,12 +12,19 @@ WARNING
 
 <b><h3>General code usage</b></h3> 
 
-1. #include the libraryCreate a slider object
+1. #include the library 
+#include <FlickerFreePrint.h>
 
 2. create a FlickerFreePaint object for each data to be drawn
+(pass in your display object and set fore color and back color)
+FlickerFreePrint<ILI9341_t3> Data1(&Display, 0xFFFF, 0X0000);
+
 
 3. Print the data similar to the Print object except call print on the data object
-
+  Data1.setTextColor(0xFFFF, 0X0000);
+  float j = some data;
+  Data1.print(j, 4);
+  
 <b><h3>Tips on usage</b></h3> 
 
   1. This library is template based so it should work with most display drivers provided
