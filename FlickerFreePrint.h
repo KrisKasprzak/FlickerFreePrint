@@ -64,7 +64,7 @@ class FlickerFreePrint {
 
   public:
 
-     FlickerFreePrint(T1* disp, uint16_t ForeColor = 65536, uint16_t BackColor = 0)
+     FlickerFreePrint(T1* disp, uint16_t ForeColor = 65535, uint16_t BackColor = 0)
     {
       d = disp;
 	  fc = ForeColor;
@@ -388,3 +388,4 @@ class FlickerFreePrint {
 
 
 /////////////////////////////
+
